@@ -1,0 +1,151 @@
+.flormar-slider {
+    background-color: #fde4eb;
+    position: relative;
+    padding: 0 210px;
+}
+
+.flormar-slider__container {
+    padding: 22px 0 39px 0;
+    max-width: 1470px;
+    margin: 0 auto;
+}
+
+.flormar-slider__container h3 {
+    font-size: 40px;
+    text-align: right;
+    margin-bottom: 23px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.flormar-slider .swiper {
+    overflow: hidden;
+}
+
+.swiper-button-prev:after {
+    content: url(../images/arrow-prev.svg) !important;
+}
+
+.swiper-button-next:after {
+    content: url(../images/arrow-next.svg) !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    opacity: 0.9;
+}
+
+.swiper-button-prev {
+    left: 90px !important;
+}
+
+.swiper-button-next {
+    right: 90px !important;
+}
+.flormar-slider .swiper-wrapper {
+    display: flex;
+    align-items: stretch; 
+}
+
+.flormar-slider .swiper-slide {
+    height: auto !important;
+}
+
+.flormar-slider__slide {
+    height: 100%;
+}
+
+.flormar-slider__slide a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
+
+.flormar-slider__slide .product-title {
+    flex-grow: 1; 
+}
+
+.flormar-slider__slide .attachment-woocommerce_thumbnail,
+.flormar-slider__slide .woocommerce-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.flormar-slider__slide .product-title {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding: 26px 0 31px 0;
+    border-top: 0.5px #6C6C6C solid;
+}
+
+.flormar-slider__slide .price {
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+}
+.flormar-slider__slide .price bdi{
+    font-weight: 500;
+}
+
+@media (max-width: 1401px) {
+    .flormar-slider__container h3 {
+        font-size: 36px;
+        margin-bottom: 31px;
+    }
+    .flormar-slider__slide .price {
+        font-size: 18px;
+    }
+    .flormar-slider__slide .product-title {
+        font-size: 16px;
+        padding: 16px 0 20px 0;
+    }
+}
+@media (max-width: 1201px) {
+    .flormar-slider {
+        padding: 0 110px;
+    }
+    .swiper-button-prev {
+        left: 40px !important;
+    }
+    
+    .swiper-button-next {
+        right: 40px !important;
+    }
+    .flormar-slider__container {
+        padding: 31px 0 39px 0;
+    }
+}
+@media (max-width: 769px) {
+    .flormar-slider {
+        padding: 0 60px;
+    }
+    .swiper-button-prev {
+        left: 16px !important;
+    }
+    .swiper-button-next {
+        right: 16px !important;
+    }
+    .flormar-slider__container h3 {
+        text-align: center;
+        font-size: 28px
+    }
+}
+@media (max-width: 486px) {
+    .flormar-slider {
+        padding: 0 21px;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        display: none;
+    }
+    .flormar-slider__container h3 {
+        text-align: center;
+        font-size: 28px
+    }
+}

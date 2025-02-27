@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Flormar Test Slider
  * Version: 1.0.0
- * Author: Maskym Nizovyi
+ * Author: Maksym Nizovyi
  * Text Domain: flormar-test-slider
  */
 
@@ -52,19 +52,26 @@ function flormar_test_slider_shortcode($atts)
 
     ob_start(); ?>
 
-    <div class="flormar-slider-container">
-        <h3> <?= __('Best-selling products', 'flormar-test-slider') ?></h3>
-        <div class="flormar-test-slider">
-            <?php while ($query->have_posts()) : $query->the_post();
-                global $product; ?>
-                <div class="slider-item">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php echo woocommerce_get_product_thumbnail(); ?>
-                        <h3 class="product-title"><?php the_title(); ?></h3>
-                        <span class="price"><?php echo $product->get_price_html(); ?></span>
-                    </a>
+    <div class="flormar-slider">
+        <div class="flormar-slider__container">
+            <h3><?= __('Best-selling products', 'flormar-test-slider') ?></h3>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <?php while ($query->have_posts()) : $query->the_post();
+                        global $product; ?>
+                        <div class="swiper-slide flormar-slider__slide">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php echo woocommerce_get_product_thumbnail(); ?>
+                                <h4 class="product-title"><?php the_title(); ?></h4>
+                                <span class="price"><?php echo $product->get_price_html(); ?></span>
+                            </a>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
-            <?php endwhile; ?>
+
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
     </div>
 
@@ -75,14 +82,12 @@ function flormar_test_slider_shortcode($atts)
 
 function flormar_test_slider_enqueue_scripts()
 {
-    wp_enqueue_style('slick-slider', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
-    wp_enqueue_style('slick-theme', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
-
+    wp_enqueue_style('swiper', 'https://unpkg.com/swiper/swiper-bundle.min.css');
     wp_enqueue_style('flormar-test-slider', plugins_url('assets/css/slider.css', __FILE__));
 
-    wp_enqueue_script('slick-slider', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array('jquery'), '1.8.1', true);
 
-    wp_enqueue_script('flormar-test-slider', plugins_url('assets/js/slider-init.js', __FILE__), array('jquery', 'slick-slider'), '1.0.0', true);
+    wp_enqueue_script('flormar-test-slider', plugins_url('assets/js/slider-init.js', __FILE__), array('swiper'), '1.0.0', true);
+    wp_enqueue_script('swiper', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), '8.4.5', true);
 }
 add_action('wp_enqueue_scripts', 'flormar_test_slider_enqueue_scripts');
 
